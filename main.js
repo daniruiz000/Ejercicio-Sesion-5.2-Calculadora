@@ -18,6 +18,7 @@ let elementEqual = document.getElementsByClassName('button--equal')[0];
 
 
 
+
 let showInResultado = (x)=> {
     elementScreen.textContent += x;
 };
