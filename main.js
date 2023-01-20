@@ -28,7 +28,7 @@ let clearScreen = ()=>{
 };
 
 let reset = ()=>{
-    elementScreen.textContent = '';
+    clearScreen();
     operandA = 0;
     operandB = 0;
     operator = '';
@@ -37,53 +37,51 @@ let reset = ()=>{
 
 let operate = (x)=>{
     operandA = elementScreen.textContent;
+    clearScreen();
     operator = x;
-    showInResultado(x);   
+      
 };
 
-console.log(operandA);
-console.log(operandB);
-console.log(operator);
 
 let equal = ()=>{
-    operandB = elementScreen.textContent[2];
+    operandB = elementScreen.textContent;
     resolve();
 };
 
 let resolve = ()=>{
-    let resp = 0;
+    
     switch (operator) {
         case "+":
-            resp = parseInt(operandA) + parseInt(operandA)
+            resultado = parseFloat(operandA) + parseFloat(operandB)
             break;
 
         case "-":
-            resp = parseInt(operandA) - parseInt(operandA)
+            resultado = parseFloat(operandA) - parseFloat(operandB)
             break;
 
         case "*":
-            resp = parseInt(operandA) * parseInt(operandA)
+            resultado = parseFloat(operandA) * parseFloat(operandB)
             break;
 
         case "/":
-            resp = parseInt(operandA) / parseInt(operandA)
+            resultado = parseFloat(operandA) / parseFloat(operandB)
             break;
 
     }
     
-    elementScreen.textContent = resp;
+    elementScreen.textContent = resultado;
 };
 
 
 
-for(let i = 0; i<elementOperand.length;i++){
+for (let i = 0 ; i<elementOperand.length ; i++){
     elementOperand[i].addEventListener('click',function() {showInResultado(elementOperand[i].value)});
-}
+};
 
 
-for(let i = 0; i<elementOperator.length;i++){
+for (let i = 0 ; i<elementOperator.length ; i++){
     elementOperator[i].addEventListener('click',function() {operate(elementOperator[i].value)});
-}
+};
 
 elementClear.addEventListener('click', clearScreen);
 
