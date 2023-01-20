@@ -1,11 +1,14 @@
 
 
+//Variables:
+
 let operandA = 0;
 let operandB = 0;
 let operator = '';
 let resultado;
 
 
+//Identificación de cada elemento:
 
 let elementScreen = document.getElementsByClassName("calculator__result")[0];
 
@@ -16,8 +19,7 @@ let elementClear = document.getElementsByClassName('button--clear')[0];
 let elementEqual = document.getElementsByClassName('button--equal')[0];
 
 
-
-
+//Funciones:
 
 let showInResultado = (x)=> {
     elementScreen.textContent += x;
@@ -42,7 +44,6 @@ let operate = (x)=>{
       
 };
 
-
 let equal = ()=>{
     operandB = elementScreen.textContent;
     resolve();
@@ -66,18 +67,17 @@ let resolve = ()=>{
         case "/":
             resultado = parseFloat(operandA) / parseFloat(operandB)
             break;
-
     }
     
     elementScreen.textContent = resultado;
 };
 
 
+//Eventos:
 
 for (let i = 0 ; i<elementOperand.length ; i++){
     elementOperand[i].addEventListener('click',function() {showInResultado(elementOperand[i].value)});
 };
-
 
 for (let i = 0 ; i<elementOperator.length ; i++){
     elementOperator[i].addEventListener('click',function() {operate(elementOperator[i].value)});
